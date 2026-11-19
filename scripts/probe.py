@@ -4,13 +4,13 @@ import sys
 import time
 
 mode = sys.argv[1]
-expected = {"baseline": 0, "delayed": 50, "ingress-only": 25, "egress-only": 25}[mode]
+expected = {"baseline": 0, "delayed": 50}[mode]
 
 for address, source, tagged in (
-    ("10.200.2.2", "10.200.1.2", True),
-    ("10.200.2.2", "10.200.1.3", False),
-    ("fd00:201::2", "fd00:200::2", True),
-    ("fd00:201::2", "fd00:200::3", False),
+    ("10.200.1.1", "10.200.1.2", True),
+    ("10.200.1.1", "10.200.1.3", False),
+    ("fd00:200::1", "fd00:200::2", True),
+    ("fd00:200::1", "fd00:200::3", False),
 ):
     for port in (6033, 3306, 6032):
         samples = []

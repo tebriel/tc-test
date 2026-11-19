@@ -2,7 +2,7 @@ import selectors
 import socket
 
 selector = selectors.DefaultSelector()
-for family, address in ((socket.AF_INET, "10.200.1.1"), (socket.AF_INET6, "fd00:200::1")):
+for family, address in ((socket.AF_INET, "10.200.2.2"), (socket.AF_INET6, "fd00:201::2")):
     for port in (6033, 3306, 6032):
         listener = socket.socket(family)
         listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)

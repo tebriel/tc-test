@@ -18,11 +18,7 @@ Vagrant.configure("2") do |config|
     set -eu
     export DEBIAN_FRONTEND=noninteractive
     apt-get update -qq
-    apt-get install -y --no-install-recommends iproute2 kmod python3
-    if ! modprobe ifb; then
-      apt-get install -y --no-install-recommends "linux-modules-extra-$(uname -r)"
-      modprobe ifb
-    fi
+    apt-get install -y --no-install-recommends iproute2 iptables python3
     bash /home/vagrant/tc-test/run-test.sh
   SHELL
 end
